@@ -1,11 +1,11 @@
-﻿namespace FileSystem.Data.Models.Repositories
+﻿namespace FileSystem.Data.Repositories
 {
     using Abstract;
 
     /// <summary>
     /// Repositories for working with folder entities
     /// </summary>
-    public class FolderRepositories : IFolderRepository
+    public class FolderRepository : IFolderRepository
     {
          
     }

@@ -1,4 +1,4 @@
-﻿namespace FileSystem.Data.Models.Entities
+﻿namespace FileSystem.Data.Entities
 {
     /// <summary>
     /// Entity, which describes the file on hard disk

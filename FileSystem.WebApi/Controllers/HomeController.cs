@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-
-namespace FileSystem.WebApi.Controllers
+﻿namespace FileSystem.WebApi.Controllers
 {
+    using System.Web.Mvc;
+
     public class HomeController : Controller
     {
+        // GET: Home
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
-
             return View();
         }
     }

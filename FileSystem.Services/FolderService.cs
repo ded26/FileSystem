@@ -1,10 +1,9 @@
-﻿namespace FileSystem.BusinessLogic
+﻿namespace FileSystem.Services
 {
     using System;
     using System.Collections.Generic;
-    using Data.Models.Abstract;
-    using Data.Models.Entities;
-
+    using Data.Abstract;
+    using Data.Entities;
 
     /// <summary>
     /// Business logic for managing folders 

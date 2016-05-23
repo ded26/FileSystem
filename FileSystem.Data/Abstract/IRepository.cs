@@ -1,4 +1,4 @@
-﻿namespace FileSystem.Data.Models.Abstract
+﻿namespace FileSystem.Data.Abstract
 {
     /// <summary>
     /// Base repository

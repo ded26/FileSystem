@@ -1,4 +1,4 @@
-﻿namespace FileSystem.Data.Models.Entities
+﻿namespace FileSystem.Data.Entities
 {
     /// <summary>
     /// Entity, which describe the foldrer on hard disk
