@@ -2,6 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Data;
     using Data.Abstract;
     using Data.Entities;
 
@@ -10,26 +14,24 @@
     /// </summary>
     public class FolderService
     {
-        private IFolderRepository _folderRepository;
+        private readonly IFolderRepository _folderRepository;
 
         public FolderService(IFolderRepository folderRepository)
         {
             _folderRepository = folderRepository;
         }
 
-        public IEnumerable<string> GetObjects(string path)
-        {
-            throw new NotImplementedException();
-        }
 
-        public string GetCurrentPath()
+        public async Task<CurrentFolder> GetRootFolderAsync(string path)
         {
-            throw new NotImplementedException();
+            var files = await _folderRepository.GetAllFilesAsync(path);
+            return new CurrentFolder
+            {
+                Path = path,
+                Between10And50Mb = files.Count(f => f.Size > 10485760 && f.Size < 52428800),
+                Less10Mb = files.Count(f => f.Size < 10485760),
+                More100Mb = files.Count(f => f.Size > 104857600)
+            };
         }
-
-        public IEnumerable<FileEntity> GetFilesSize(string path)
-        {
-            throw new NotImplementedException();
-        } 
     }
 }
