@@ -11,8 +11,13 @@
         public string Path { get; set; }
 
         public int Less10Mb { get; set; }
+
         public int Between10And50Mb { get; set; }
+
         public int More100Mb { get; set; }
-        public IEnumerable<string> Objects { get; set; }
+
+        public IEnumerable<string> Folders { get; set; }
+
+        public IEnumerable<string> Files { get; set; } 
     }
 }

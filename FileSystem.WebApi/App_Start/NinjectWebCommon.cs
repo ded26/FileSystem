@@ -14,6 +14,7 @@ namespace FileSystem.WebApi.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using Services;
+    using Services.Abstract;
 
     public static class NinjectWebCommon 
     {
@@ -67,7 +68,7 @@ namespace FileSystem.WebApi.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IFolderRepository>().To<FolderRepository>();
-            kernel.Bind<FolderService>().ToSelf();
+            kernel.Bind<IFolderService>().To<FolderService>();
         }        
     }
 }

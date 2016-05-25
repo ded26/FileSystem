@@ -1,6 +1,7 @@
 ﻿namespace FileSystem.Data.Repositories
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
@@ -21,6 +22,35 @@
                                                 Name = x.FullName,
                                                 Size = x.Length
                                             }).ToArray());
+        }
+
+        public Task<List<string>> EnumerateFoldersAsync(string path)
+        {
+            return Task.Run(() =>
+            {
+                var objects = new List<string>();
+                if (!path.Equals(Directory.GetDirectoryRoot(path)))
+                    objects.Add("..");
+                objects.AddRange(Directory.EnumerateDirectories(path)
+                    .Select(d => new DirectoryInfo(d + "\\").Name));
+                return objects;
+            });
+        }
+
+        public Task<List<string>> EnumerateFilesAsync(string path)
+        {
+            return Task.Run(() =>
+            {
+                var objects = new List<string>();
+                objects.AddRange(Directory.GetFiles(path).Select(Path.GetFileName));
+                return objects;
+            });
+        }
+
+        public string GetParentFolder(string path)
+        {
+            DirectoryInfo dir = new DirectoryInfo(path);
+            return dir.Parent.FullName;
         }
     }
 }

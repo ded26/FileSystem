@@ -1,16 +1,22 @@
-﻿@using System.Web.Optimization
-@{
+﻿@{
     ViewBag.Title = "File system";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="bodyContainer" ng-app="FsApp">
+<style>
+    th {
+        text-align: center;
+    }
+</style>
+<div id="bodyContainer" ng-app="FsApp" class="col-md-4 col-md-offset-4" style="margin-top: 20px; background: #f3f3f3">
     <div ng-controller="FsController">
-        <table>
-            <tr>
-                <th>Less 10Mb</th>
-                <th>10Mb-50Mb</th>
-                <th>More 100Mb</th>
-            </tr>
+        <table class="table table-bordered" style="margin-top: 20px; border-color: #b3b3b3; text-align: center">
+            <thead>
+                <tr style="color: white; background: #b3b3b3;">
+                    <th>Less 10Mb</th>
+                    <th>10Mb-50Mb</th>
+                    <th>More 100Mb</th>
+                </tr>
+            </thead>
             <tr>
                 <td>{{less10mb}}</td>
                 <td>{{between10and50mb}}</td>
@@ -18,9 +24,12 @@
             </tr>
         </table>
         <br/>
-        <div id="currentPath">{{currentpath}}</div>
+        <div id="currentPath"><b>Current path:</b> {{currentpath}}</div>
         <div ng-repeat="item in objects">
             <a href="" ng-click="movetofolder(item)">{{item}}</a>
+        </div>
+        <div ng-repeat="item in files">
+            <a href="">{{item}}</a>
         </div>
     </div>
 

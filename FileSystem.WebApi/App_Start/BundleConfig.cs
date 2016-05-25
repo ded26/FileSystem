@@ -9,28 +9,44 @@
         public static void RegisterBundles(BundleCollection bundles)
         {
             RegisterScripts(bundles);
+            RegisterStyles(bundles);
+        }
+
+        private static void RegisterStyles(BundleCollection bundles)
+        {
+            Action<string, string[]> newBundle = (s, strings) => bundles.Add(new StyleBundle("~/" + s).Include(strings.Select(s1 => "~/" + s1).ToArray()));
+
+            newBundle("bootstrap", new[]
+            {
+                "content/bootstrap.min.css"
+            });
         }
 
         private static void RegisterScripts(BundleCollection bundles)
         {
-            Action<string, string[]> NewBundle = (s, strings) => bundles.Add(new ScriptBundle("~/" + s).Include(strings.Select(s1 => "~/" + s1).ToArray()));
+            Action<string, string[]> newBundle = (s, strings) => bundles.Add(new ScriptBundle("~/" + s).Include(strings.Select(s1 => "~/" + s1).ToArray()));
 
-            NewBundle("jquery", new[]
+            newBundle("jquery", new[]
             {
                 "scripts/jquery-{version}.js"
             });
 
-            NewBundle("ajax", new[]
+            newBundle("bootstrapjs", new[]
+            {
+                "scripts/bootstrap.min.js"
+            });
+
+            newBundle("ajax", new[]
             {
                 "scripts/jquery.unobtrusive-ajax.js"
             });
 
-            NewBundle("angularjs", new[]
+            newBundle("angularjs", new[]
             {
                 "scripts/angular.js"
             });
 
-            NewBundle("fsapp", new[]
+            newBundle("fsapp", new[]
             {
                 "scripts/app/filesystem-controller.js"
             });
